@@ -1,10 +1,14 @@
 
 const express = require('express');
+const path=require('path')
 const app = express()
 const subscriberSchma=require('./models/subscribers')
 
 
 // Your code goes here
+app.get('/',(req,res)=>{
+    res.sendFile(path.join(__dirname,'/index.html'))
+})
 app.get('/subscribers',async (req,res)=>{
     try{
         const data=await subscriberSchma.find()
